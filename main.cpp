@@ -2,25 +2,19 @@
 #include <vector>
 
 using namespace std;
+
 struct joueur{
     string prenom;
     string nom;
-    int equipe;
+    unsigned int equipe;
     int score;
 };
 
 struct equipe{
-    joueur joueur;
+    joueur j [7];
     int score;
 };
 
-int hasard(int n){
-    int v=rand()%18+1;
-    if(n == v){
-        v=rand()%18+1;
-    }
-    return v;
-}
 string batonet(const string & j1,const string & j2){
 cout << "C'est parti !" << endl;
 string winner;
@@ -60,28 +54,79 @@ return winner ;
 }
 
 
+string litUneString (){
+string uneChaine;
+while (true){
+    getline (cin, uneChaine);
+    if ((!cin) || (uneChaine.substr(0,2) != "//")) break;
+}
+return uneChaine;
+}
+
+int litUnEntier (){
+string uneChaine;
+while (true){
+    getline (cin, uneChaine);
+    if ((!cin) || (uneChaine.substr(0,2) != "//")) break;
+}
+return stoi(uneChaine);
+}
+
 int main()
 {
-    cout << "Hello World!" << endl;
-//    int n=rand()%18+1;
-    equipe tournoie [4];
-    size_t i=1;
-    joueur j[3];
-    for(;i < 4;++i){
-    cin >> j[i].nom;
-    cin >> j[i].equipe;
-    cin >> j[i].prenom;
-    if(j[i].equipe == 1){
-        tournoie.joueur[i]=;
+equipe lesequipes [18] ;
+unsigned int cpt;
+joueur lesjoueurs [114];
+joueur j;
+for (size_t i (0); i < 114; ++i){
+    string nom (litUneString());
+    string prenom  (litUneString());
+    int equipe (litUnEntier());
+    j.nom=nom;
+    j.prenom=prenom;
+    j.equipe=equipe;
+    cout << j.nom << endl << j.prenom[i] << endl << equipe << endl;
+    lesjoueurs[i]=j;
+}for (size_t i (0); i < 114; ++i){
+    cpt=0;
+    unsigned int autrecpt = 0;
+    while(cpt != 18){
+        if(lesjoueurs[i].equipe == cpt){
+            lesequipes[cpt].j[autrecpt] = lesjoueurs[i];
+            autrecpt = autrecpt +1;
+            if(autrecpt == 7){
+                autrecpt=0;
+            }
+        }
+        cpt = cpt+1;
     }
-    }
 
-
-//    string gagnat;
-//        n=hasard(n);
-//        cout <<"l'equipe "<< i << " affronte l'equipe " << n << endl;
-//    cout << gagnat  << endl;
-
-
-    return 0;
 }
+
+return 0;
+}
+//int main()
+//{
+//    cout << "Hello World!" << endl;
+////    int n=rand()%18+1;
+//    equipe tournoie [4];
+//    size_t i=1;
+//    joueur j[3];
+//    for(;i < 4;++i){
+//    cin >> j[i].nom;
+//    cin >> j[i].equipe;
+//    cin >> j[i].prenom;
+//    if(j[i].equipe == 1){
+//        tournoie.joueur[i]=;
+//    }
+//    }
+
+
+////    string gagnat;
+////        n=hasard(n);
+////        cout <<"l'equipe "<< i << " affronte l'equipe " << n << endl;
+////    cout << gagnat  << endl;
+
+
+//    return 0;
+//}
