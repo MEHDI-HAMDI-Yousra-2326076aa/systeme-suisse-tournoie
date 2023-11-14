@@ -530,8 +530,6 @@ void pierreFeuilleC(equipe&  e1,equipe&  e2)
 }
 //le jeu du baton
 void  batonet(equipe&  j1,equipe& j2){
-  cout << "C'est parti !" << endl;
-    //    vector<equipe> nv;
     int pte1=0, pte2, enlever=0;
     unsigned int compteur=0;
     if(j1.j.size() != j2.j.size() || j2.j.size() > j1.j.size() ){
@@ -581,9 +579,6 @@ void  batonet(equipe&  j1,equipe& j2){
     else{
         j2.points+=2;
     }
-    //    nv.push_back(j1);
-    //    nv.push_back(j2);
-    //    return nv;
 }
 
 
@@ -611,7 +606,6 @@ bool comparejoueur(const joueur& joueur1, const joueur& joueur2) {
 }
 equipe tournoie(vector<equipe> lesequipes){
     equipe gagnant;
-    size_t o;
     equipe changement;
     //on cree un tableau qui va stoquer le numero d'equipe qui se sont affronter : ils sont voisins
     vector<unsigned int> dejavs;
@@ -627,40 +621,38 @@ equipe tournoie(vector<equipe> lesequipes){
             //    ici on trie le tableau de joueur ,du moin bon score au meilleur , pour que les joueur de même niveau s'affronte
             sort(begin(lesequipes[i].j),end(lesequipes[i].j),comparejoueur);
             sort(begin(lesequipes[i+1].j),end(lesequipes[i+1].j),comparejoueur);
-            cout << cpt <<endl;
             //on passe aux jeux
             batonet(lesequipes[i],lesequipes[i+1]);
-            affichetab(lesequipes);
-            cout << endl;
+//            affichetab(lesequipes);
+//            cout << endl;
             //        cout << lesequipes[i].points << " et les adversaires " << lesequipes[i+1].points << endl ;
             pierreFeuilleC(lesequipes[i],lesequipes[i+1]);
-                   affichetab(lesequipes);
-                    cout << endl;
+//                   affichetab(lesequipes);
+//                    cout << endl;
             //                   cout << lesequipes[i].points << " et les adversaires " << lesequipes[i+1].points << endl;
             morpion(lesequipes[i],lesequipes[i+1]);
-                   affichetab(lesequipes);
-                    cout << endl;
+//                   affichetab(lesequipes);
+//                    cout << endl;
             //                        cout << lesequipes[i].points << " et les adversaires " << lesequipes[i+1].points << endl;
             pileouface(lesequipes[i],lesequipes[i+1]);
-                   affichetab(lesequipes);
-                    cout << endl;
+//                   affichetab(lesequipes);
+//                    cout << endl;
             //                         cout << lesequipes[i].points << " et les adversaires " << lesequipes[i+1].points << endl;
             puissance4(lesequipes[i],lesequipes[i+1]);
 
             //                       cout << lesequipes[i].points << " et les adversaires " << lesequipes[i+1].points << endl;
             //            dejavs.push_back(lesequipes[i].j[0].equipe);
             //            dejavs.push_back(lesequipes[i+1].j[0].equipe);
-            affichetab(lesequipes);
-            o=lesequipes.size();
-            cout << "taille de tab " << o << endl;
+//            affichetab(lesequipes);
+//            o=lesequipes.size();
+//            cout << "taille de tab " << o << endl;
         }
         //On passe aux autres rondes
         //Ici aussi on trie le tableau des equipes : de l'equipe qui a le plus de point à celle qui a le moin
         sort (begin(lesequipes), end(lesequipes),comparaison);
-            affichetab(lesequipes);
+//        affichetab(lesequipes);
         //Pour toute les equipes ils continuent a être dans le tournoie , forcement comme ils sont ordonné leur voisin est du même niveau sauf pour certains cas
         cpt=cpt+1;
-        cout <<"l'equipe gagnante " << lesequipes[0].j[0].equipe<<endl;
         //On verifie que le nouveau tableau nous donne des voisins que ne se sont jamais affronter
         //desormais on verifie que les 2 tableau sont differents si ils ne le sont pas on reste dans la boucle pour changer
         //        for(size_t i=0;i<dejavs.size()-2;i=i+2){
